@@ -1,0 +1,35 @@
+*.gem
+*.rbc
+.bundle
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+Vagrantfile
+.vagrant
+vendor
+.vendor
+.rake_tasks~
+.vagrant
+spec/reports
+.coverage
+.watsonrc
+.DS_Store
+Gemfile.local
+
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
+*.orig
+
+# test-kitchen files
+.kitchen/
+.kitchen.local.yml
+.coverage/

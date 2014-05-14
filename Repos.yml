@@ -1,0 +1,83 @@
+ -
+  name: aws
+  tags:
+    - aws
+    - cloudops
+  url: "git@github.com:bossjones/aws.git"
+ -
+  name: motd
+  tags:
+   - behance
+   - cloudops
+  url: "git@github.com:bossjones/motd.git"
+ -
+  name: apt
+  tags:
+    - opscode
+  url: "git@github.com:bossjones/apt.git"
+ -
+  name: nginx
+  tags:
+    - behance
+  url: "git@github.com:bossjones/nginx.git"
+ -
+  name: chef-nginx_simplecgi
+  tags:
+    - behance
+  url: "git@github.com:bossjones/chef-nginx_simplecgi.git"
+ -
+  name: sudo
+  tags:
+    - opscode
+  url: "git@github.com:bossjones/sudo.git"
+ -
+  name: users
+  tags:
+    - opscode
+    - bebase
+  url: "git@github.com:bossjones/users.git"
+ -
+  name: yum
+  tags:
+    - opscode
+  url: "git@github.com:bossjones/yum.git"
+ -
+  name: windows
+  tags:
+    - opscode
+  url: "git@github.com:bossjones/windows.git"
+ -
+  name: chef_handler
+  tags:
+    - opscode
+  url: "git@github.com:bossjones/chef_handler.git"
+ -
+  name: openssl
+  tags:
+    - opscode
+  url: "git@github.com:bossjones/openssl.git"
+ -
+  name: ssl
+  tags:
+    - opscode
+  url: "git@github.com:bossjones/ssl.git"
+ -
+  name: python
+  tags:
+    - opscode
+  url: "git@github.com:bossjones/python.git"
+ -
+  name: build-essential
+  tags:
+    - opscode
+  url: "git@github.com:bossjones/build-essential.git"
+ -
+  name: iptables-ng
+  tags:
+    - opscode
+  url: "git@github.com:bossjones/iptables-ng.git"
+ -
+  name: logrotate
+  tags:
+    - opscode
+  url: "git@github.com:bossjones/logrotate.git"

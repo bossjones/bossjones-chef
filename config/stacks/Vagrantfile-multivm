@@ -1,0 +1,59 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+# This file is meant to be run from the cookbooks directory
+require File.join(File.dirname(__FILE__), '../../', 'rake-config-local.rb')
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  STACKS[STACK_SELECTED].each do |opts|
+
+    ###########
+
+    config.vm.define opts[:CHEF_HOST_NAME] do |c|
+
+      c.vm.box      = "marionette_v3"
+      c.vm.box_url  = BOX_URL
+      c.vm.hostname = opts[:CHEF_HOST_NAME]
+      c.vm.network "private_network", ip: "#{opts[:IP_ADDRESS]}"
+      c.berkshelf.enabled = true
+
+      c.vm.provision "shell",
+        :inline => "if [ `grep #{CHEF_SERVER_HOSTNAME} /etc/hosts|wc -l` -eq 0 ]; then echo #{CHEF_SERVER_IP} #{CHEF_SERVER_HOSTNAME} >> /etc/hosts; fi"
+
+      c.vm.provision :chef_client do |chef|
+        chef.validation_client_name = "chef-validator"
+        chef.chef_server_url        = CHEF_SERVER_URL
+        chef.validation_key_path    = CHEF_VAL_KEY_PATH
+        chef.log_level              = opts[:CHEF_LOG_LEVEL]
+        chef.environment            = opts[:CHEF_ENVIRONMENT]
+
+        chef.run_list               = opts[:CHEF_RUN_LIST]
+        #chef.json                   = CUSTOM_JSON_DATA
+
+      end # chef
+
+      config.vm.provider :virtualbox do |vb|
+
+        # Don't boot with headless mode
+        vb.gui = false
+
+        # use host dns resolver
+        vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+        #vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
+
+        # Use VBoxManage to customize the VM. For example to change memory:
+        vb.customize ["modifyvm", :id, "--memory", "#{opts[:MEMORY]}"]
+
+        # override name that appears in virtualbox
+        vb.name = opts[:CHEF_HOST_NAME]
+      
+      end # vb
+
+    end # config
+
+  end # STACKS
+
+end # Vagrant

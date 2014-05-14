@@ -1,0 +1,33 @@
+inherit_from: rubocop-todo.yml
+
+AllCops:
+  Excludes:
+    - '**/tmp/**'
+    - 'tmp/**'
+    - '**/vendor/**'
+    - 'vendor/**'
+  Includes:
+    - Berksfile
+    - Gemfile
+    - Rakefile
+    - 'cookbooks/**/Berksfile'
+    - 'cookbooks/**/Gemfile'
+    - 'cookbooks/**/Rakefile'
+
+Encoding:
+  Enabled: false
+
+LineLength:
+  Enabled: false
+
+TrailingBlankLines:
+  Enabled: false
+
+NumericLiterals:
+  Enabled: false
+
+StringLiterals:
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes

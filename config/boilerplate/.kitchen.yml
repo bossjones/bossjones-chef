@@ -1,0 +1,7 @@
+---
+suites:
+  - name: default
+    run_list:
+      - recipe[bebootstrap::prereqs]
+      - recipe[cookbook::recipe]
+    attributes:
