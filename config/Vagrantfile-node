@@ -8,7 +8,7 @@ require File.join(File.dirname(__FILE__), '../../config', 'rake-config-local.rb'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.define "chefnode" do |chefnode|
+  config.vm.define "chefnode-ubuntu" do |chefnode|
 
     chefnode.vm.box = VM_BOX
     chefnode.vm.box_url = BOX_URL
@@ -21,7 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       :inline => "if [ `grep #{CHEF_SERVER_HOSTNAME} /etc/hosts|wc -l` -eq 0 ]; then echo #{CHEF_SERVER_IP} #{CHEF_SERVER_HOSTNAME} >> /etc/hosts; fi"
 
     chefnode.vm.provision :chef_client do |chef|
-      chef.validation_client_name = "chef-validator"
+      chef.validation_client_name = "bossjoneschef-validator"
       chef.chef_server_url        = CHEF_SERVER_URL
       chef.validation_key_path    = CHEF_VAL_KEY_PATH
       chef.log_level              = CHEF_LOG_LEVEL
@@ -36,7 +36,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider :virtualbox do |vb|
 
     # Don't boot with headless mode
-    vb.gui = false
+    vb.gui = true
 
     # use host dns resolver
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
