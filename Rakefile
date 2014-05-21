@@ -27,6 +27,7 @@ require 'versionomy'
 require 'chef'
 require 'chef/cookbook/metadata'
 require 'github_api'
+require 'pry'
 
 # Load constants + local constants from rake config file.
 require File.join(File.dirname(__FILE__), 'config', 'rake-config.rb')
@@ -242,6 +243,12 @@ def create_kniferb
     "cookbook_path            [ '#{ CHEF_COOKBOOKS_DIR }' ]",
     "",
   ].join("\n")
+
+  timestamp = Time.now
+  file_name_backup = "#{ CHEF_CONFIG_DIR }/.backup/knife#{ CHEF_LOCAL_SUFFIX }-" + timestamp.inspect + ".rb"
+
+  FileUtils.mkdir_p(File.dirname(file_name_backup))
+  FileUtils.cp(file_name, file_name_backup)
   File.open(file_name, 'w') {|f| f.write( file_lines ) }
 
   puts "created #{ file_name }"

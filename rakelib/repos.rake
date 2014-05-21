@@ -163,6 +163,12 @@ namespace :repo do
     filter_input = args[:filter_input] || 'all'
     branch = args[:branch] || BUILD_BRANCH
 
+    CHEF_COOKBOOKS_DIR = File.join(TOPDIR, 'cookbooks')
+    if !File.directory?(CHEF_COOKBOOKS_DIR)
+      puts "Directory didn't exist. Making: #{ CHEF_COOKBOOKS_DIR }"
+      FileUtils.mkdir_p(CHEF_COOKBOOKS_DIR)
+    end
+
     if filter_input == 'all'
       update_git_repo("environments",branch)
       update_git_repo("roles",branch)
@@ -269,7 +275,7 @@ def update_git_repo(built_in,branch = master)
       # Update the roles repo.
       puts "*** #{built_in}"
 
-      built_in_repo = "git@github.com:behanceops/chef-#{built_in}.git"
+      built_in_repo = "git@github.com:bossjones/bossjones-chef-#{built_in}.git"
       built_in_path = File.join( TOPDIR, "#{built_in}" )
 
       if !File.directory?( built_in_path ) then
