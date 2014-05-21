@@ -60,7 +60,7 @@
   name: ssl
   tags:
     - opscode
-  url: "git@github.com:bossjones/ssl.git"
+  url: "git@github.com:bossjones/chef-cookbook-ssl.git"
  -
   name: python
   tags:

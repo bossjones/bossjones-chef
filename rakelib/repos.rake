@@ -163,7 +163,7 @@ namespace :repo do
     filter_input = args[:filter_input] || 'all'
     branch = args[:branch] || BUILD_BRANCH
 
-    CHEF_COOKBOOKS_DIR = File.join(TOPDIR, 'cookbooks')
+    #CHEF_COOKBOOKS_DIR = File.join(TOPDIR, 'cookbooks')
     if !File.directory?(CHEF_COOKBOOKS_DIR)
       puts "Directory didn't exist. Making: #{ CHEF_COOKBOOKS_DIR }"
       FileUtils.mkdir_p(CHEF_COOKBOOKS_DIR)
