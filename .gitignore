@@ -13,6 +13,7 @@ tmp
 rake-config-local.rb
 global-stack-config.rb
 cookbooks
+*cookbooks
 cookbooks/*
 data_bags
 data_bags/*

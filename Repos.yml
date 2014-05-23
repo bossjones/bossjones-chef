@@ -81,3 +81,13 @@
   tags:
     - opscode
   url: "git@github.com:bossjones/logrotate.git"
+ -
+  name: bash-it
+  tags:
+    - bossjones
+  url: "git@github.com:bossjones/bossjones-chef-bash-it.git"
+ -
+  name: chef_scarlett
+  tags:
+    - bossjones
+  url: "git@github.com:bossjones/bossjones-chef-scarlett.git"
