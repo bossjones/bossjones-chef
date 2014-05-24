@@ -10,13 +10,13 @@ provisioner:
   nodes_path: "../../nodes"
 
 platforms:
-  - name: local
+  - name: ubuntu-local
     driver_plugin: vagrant
     driver_config:
-      box: amuse-bouche-centos65
-      box_url: "http://files.be.lan/installers/vagrant_boxes/amuse-bouche-centos65.box"
+      box: ubuntu-12-04-desktop
+      box_url: "/Users/malcolm/dev/basebox-packer/virtualbox/ubuntu1204-desktop-provisionerless.box"
 
-  - name: ubuntu-local
-    driver_config:
-      box: ubuntu_12_04
-      box_url: http://download.virtualbox.org/virtualbox/4.3.10/virtualbox-4.3_4.3.10-93012~Ubuntu~precise_i386.deb
+driver:
+  name: vagrant
+  customize:
+    memory: 2048
