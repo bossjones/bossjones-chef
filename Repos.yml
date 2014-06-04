@@ -91,3 +91,7 @@
   tags:
     - bossjones
   url: "git@github.com:bossjones/bossjones-chef-scarlett.git"
+- name: openssh
+  tags:
+    - bossjones
+  url: "git@github.com:bossjones/openssh.git"
